@@ -1,0 +1,12 @@
+{
+  "name": "devshelf-frontend",
+  "version": "1.0.0",
+  "description": "Interface web pour DevShelf",
+  "main": "index.js",
+  "scripts": {
+    "dev": "echo 'Frontend ready for development'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
