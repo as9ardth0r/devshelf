@@ -1,81 +1,68 @@
-# DevShelf
+<div align="center">
 
+<!-- Replace with a real banner if you have one, otherwise remove this line -->
+<!-- <img src="YOUR_BANNER_URL" width="100%" /> -->
+
+# Hey 👋, I'm Joël
+
+**Product Builder & Full-Stack / Systems Developer**
+
+From UI/UX mockups down to low-level code, I help bring your projects to life end to end.
+
+🇫🇷 [Version française](README.fr.md) | 🇬🇧 English (this page)
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_URL)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white)](YOUR_PORTFOLIO_URL)
+[![Malt](https://img.shields.io/badge/Malt-FC5757?style=flat&logo=malt&logoColor=white)](YOUR_MALT_URL)
+[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:as9ardth0r@gmail.com)
+
+</div>
+
+---
+
+## 🛠️ Technical skills
+
+**Backend & Systems**
 ![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
 ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
+![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
+![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
 
-DevShelf est une application pour centraliser et retrouver des ressources techniques et créatives, avec un moteur d'analyse et de recherche écrit en **Rust**, exposé à **Python** via [PyO3](https://pyo3.rs/), consommé par une API **FastAPI**, et affiché dans une interface **React**.
+**Frontend & Web**
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
 
-<!-- Ajoute une capture d'écran ou un GIF de démo ici -->
+**Design & UI/UX**
+![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white)
 
-## 📐 Architecture
+---
 
-```
-rust-core/       → Module Rust compilé en extension Python (PyO3 + maturin)
-                    - analyse de texte (nombre de mots, temps de lecture, mots-clés)
-                    - moteur de recherche pondéré (le titre compte plus que le contenu)
-backend-python/   → API FastAPI, persistance SQLite (SQLModel)
-                    - appelle directement le module Rust compilé
-frontend/         → Interface React (Vite)
-                    - liste, ajoute et recherche des ressources via l'API
-```
+## 🚀 Projects
 
-Le module Rust n'est pas un module isolé : il est compilé en bibliothèque native (`.so`) importable directement en Python (`import rust_core`), et c'est lui qui calcule les métadonnées de chaque ressource ainsi que le classement de recherche — pas juste une démo qui tourne dans son coin.
+### [DevShelf](https://github.com/as9ardth0r/devshelf)
+A minimalist dashboard for developers and creatives, combining a FastAPI backend, a high-performance Rust core, and a clean web interface.
 
-## ⚡ Lancer le projet en local
+<!-- Add a screenshot if possible:
+![DevShelf preview](IMAGE_URL)
+-->
 
-### 1. Le cœur Rust (à compiler en premier)
+<!-- Add a second project if you have one, even a small one — two projects beat one "in progress" -->
+### [Second project name](PROJECT_URL)
+Short one-line description.
 
-```bash
-cd rust-core
-python3 -m venv ../venv
-source ../venv/bin/activate
-pip install maturin
-maturin develop --release
-```
+---
 
-Ceci compile `rust-core` et l'installe comme module Python (`rust_core`) directement dans l'environnement virtuel.
+## 📫 Get in touch
 
-### 2. Le backend
+- **Email:** [as9ardth0r@gmail.com](mailto:as9ardth0r@gmail.com)
+- **LinkedIn:** YOUR_LINKEDIN_URL
+- **Portfolio:** YOUR_PORTFOLIO_URL
+- **Availability:** state here if you're available now, full-time/part-time, remote, etc. — this is often the first thing freelance clients look for
 
-```bash
-cd ../backend-python
-pip install -r requirements.txt
-uvicorn main:app --reload
-```
+<div align="center">
 
-L'API est disponible sur `http://localhost:8000` (doc interactive sur `/docs`). La base SQLite (`devshelf.db`) est créée automatiquement au premier lancement.
+![GitHub stats](https://github-readme-stats.vercel.app/api?username=as9ardth0r&show_icons=true&theme=default)
 
-### 3. Le frontend
-
-```bash
-cd ../frontend
-npm install
-npm run dev
-```
-
-L'interface est disponible sur `http://localhost:5173`.
-
-## 🧪 Vérifier que tout fonctionne
-
-```bash
-curl http://localhost:8000/health
-curl -X POST http://localhost:8000/resources/ \
-  -H "Content-Type: application/json" \
-  -d '{"title":"Test Rust","category":"Backend","content":"Rust est rapide et sûr."}'
-curl "http://localhost:8000/resources/search/?q=rust"
-```
-
-## 🧱 Stack technique
-
-| Couche | Techno |
-|---|---|
-| Moteur d'analyse/recherche | Rust + PyO3 |
-| API | Python (FastAPI + SQLModel) |
-| Base de données | SQLite |
-| Frontend | React (Vite) |
-
-## 📄 Licence
-
-MIT
+</div>
