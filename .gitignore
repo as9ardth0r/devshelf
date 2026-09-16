@@ -1,1 +1,18 @@
-backend-python/venv/
+# Python
+__pycache__/
+*.pyc
+*.db
+venv/
+.venv/
+
+# Rust
+/rust-core/target/
+Cargo.lock
+
+# Node
+node_modules/
+dist/
+.vite/
+
+# Env
+.env
