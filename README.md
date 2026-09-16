@@ -57,8 +57,8 @@ Short one-line description.
 ## 📫 Get in touch
 
 - **Email:** [as9ardth0r@gmail.com](mailto:as9ardth0r@gmail.com)
-- **LinkedIn:** YOUR_LINKEDIN_URL
-- **Portfolio:** YOUR_PORTFOLIO_URL
+- **LinkedIn:** https://www.linkedin.com/in/joel-broutin-177856437/
+- **Portfolio:** https://as9ardth0r.github.io/portfolio/
 - **Availability:** state here if you're available now, full-time/part-time, remote, etc. — this is often the first thing freelance clients look for
 
 <div align="center">
