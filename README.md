@@ -4,7 +4,7 @@
 
 Save articles, notes and snippets, tag them by category, and find them again with a relevance-ranked search.
 
-![DevShelf screenshot](docs/screenshot.png)
+![DevShelf screenshot](screenshot.png)
 
 <!-- TODO: replace with a full-page capture (3-4 resources visible) or a short GIF: add a resource, then search and watch the ranking change. -->
 
