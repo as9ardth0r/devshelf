@@ -6,7 +6,7 @@ Save articles, notes and snippets, tag them by category, and find them again wit
 
 🇫🇷 [Version française](README.fr.md)
 
-![DevShelf screenshot](screenshot.png)
+![DevShelf screenshot](docs/screenshot.png)
 
 > The interface and the sample data are in French. The code, the API and this documentation are in English.
 
@@ -36,7 +36,7 @@ The Rust crate is not a side demo: it is built into a shared library and importe
 
 ## Getting started
 
-Prerequisites: Python 3.9+ (tested with 3.10), a [Rust toolchain](https://rustup.rs/), and Node.js.
+Prerequisites: Python 3.9+ (tested with 3.10), a [Rust toolchain](https://rustup.rs/), and Node.js 20.19+ (22 LTS recommended).
 
 ```bash
 git clone https://github.com/as9ardth0r/devshelf.git
@@ -107,9 +107,6 @@ Possible next steps:
 - Portfolio: <https://as9ardth0r.github.io/portfolio>
 - LinkedIn: <https://www.linkedin.com/in/joel-broutin-177856437/>
 - Malt: <https://www.malt.fr/profile/joelbroutin>
-- Codeur: <https://www.codeur.com/users/761142>
-- Upwork: <https://www.upwork.com/freelancers/~010c844bd15ef2af23>
-- Fiverr: <https://fr.fiverr.com/broutinjoel>
 
 Open to freelance missions: get in touch through any of the links above.
 
