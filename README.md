@@ -1,73 +1,103 @@
 # DevShelf
 
-**A technical resource library with a Python API and search ranking computed in Rust.**
+**A technical resource library with a FastAPI backend and search ranking computed in Rust.**
 
 Save articles, notes and snippets, tag them by category, and find them again with a relevance-ranked search.
 
-![DevShelf screenshot](screenshot.png)
+🇫🇷 [Version française](README.fr.md)
 
-<!-- TODO: replace with a full-page capture (3-4 resources visible) or a short GIF: add a resource, then search and watch the ranking change. -->
+![DevShelf screenshot](screenshot.png)
 
 > The interface and the sample data are in French. The code, the API and this documentation are in English.
 
 ## What it does
 
 - **Add resources** with a title, a category and a body of text
-- **Search with relevance ranking**, computed in a Rust module rather than in Python
-- **Automatic metadata**: word count, estimated reading time and keyword tags
+- **Search with relevance ranking**, computed in Rust: a match in the title counts three times more than a match in the content, and the score is normalised by document length
+- **Automatic metadata** computed in Rust on every new resource: word count, estimated reading time and the five most frequent keywords (stop words excluded)
 - **Live API status** shown in the UI
 
-## Why it is built this way
-
-This project is a small but complete stack, chosen to show how the pieces fit together rather than to be large:
-
-| Layer | Role |
-| --- | --- |
-| React frontend | Add and browse resources, search box, API status badge |
-| Python API | HTTP endpoints, validation, persistence |
-| Rust module | Search ranking (the performance-sensitive part) |
-| Database | Stores resources |
-
-<!-- TODO: name the exact tools (web framework, ORM, database, Python<->Rust bridge). Example: "FastAPI + SQLModel, PyO3 built with maturin, SQLite". Only write what is really in the repo. -->
+## Architecture
 
 ```mermaid
 flowchart LR
-    UI[React frontend] -->|HTTP| API[Python API]
-    API --> DB[(Database)]
-    API -->|ranking call| RUST[Rust ranking module]
+    UI[React + Vite] -->|HTTP| API[FastAPI]
+    API --> DB[(SQLite)]
+    API -->|PyO3 call| RUST[rust_core]
 ```
+
+| Folder | Role | Tools |
+| --- | --- | --- |
+| `frontend/` | List, add and search resources | React 19, Vite |
+| `backend-python/` | HTTP API and persistence | FastAPI, SQLModel, SQLite |
+| `rust-core/` | Text analysis and search ranking, compiled as a native Python module | Rust, PyO3, maturin |
+
+The Rust crate is not a side demo: it is built into a shared library and imported directly in Python (`import rust_core`). The API calls it to analyse each resource at creation time and to rank every search.
 
 ## Getting started
 
-<!-- TODO: replace with the real commands, and test them from a clean clone. -->
+Prerequisites: Python 3.9+ (tested with 3.10), a [Rust toolchain](https://rustup.rs/), and Node.js.
 
 ```bash
-# 1. Clone
 git clone https://github.com/as9ardth0r/devshelf.git
 cd devshelf
-
-# 2. Backend (Python + Rust module)
-# TODO: install dependencies, build the Rust module, start the API
-
-# 3. Frontend
-# TODO: install dependencies, start the dev server
 ```
 
-Then open the frontend in your browser. The badge at the top should read **API : en ligne**.
+**1. Backend and Rust module**
 
-## Sample data
+```bash
+cd backend-python
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt      # includes maturin
 
-A small set of example resources is provided in [`seed_resources.json`](seed_resources.json) so the app looks alive on first launch.
+cd ../rust-core
+maturin develop --release            # builds rust_core into the active venv
+
+cd ../backend-python
+uvicorn main:app --reload
+```
+
+The API runs on <http://localhost:8000> (interactive docs on `/docs`). The SQLite database `devshelf.db` is created on first start.
+
+**2. Sample data** (in a second terminal, with the API running)
+
+```bash
+cd backend-python
+python3 seed.py
+```
+
+It loads [`seed_resources.json`](seed_resources.json) through the API and skips titles that already exist, so it is safe to run twice.
+
+**3. Frontend**
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Open <http://localhost:5173>. The badge at the top should read **API : en ligne**.
+
+## API
+
+| Method | Route | Description |
+| --- | --- | --- |
+| `GET` | `/health` | Health check |
+| `GET` | `/resources/` | List all resources |
+| `POST` | `/resources/` | Create a resource (`title`, `category`, `content`); metadata is computed in Rust |
+| `GET` | `/resources/{id}` | Get one resource |
+| `GET` | `/resources/search/?q=...` | Search, ordered by relevance (Rust) |
 
 ## Project status
 
-MVP: the core loop (add, store, search, rank) works end to end.
+MVP: the core loop (add, store, search, rank) works end to end. Rust unit tests cover the tokenizer and the title weighting in the ranking.
 
 Possible next steps:
 
-- Better keyword extraction (stop words, minimum length, French and English)
+- Smarter keywords: a larger stop-word list and stemming, so that "accélérer" and "accélère" count as one term
+- API tests with pytest
 - Language switch for the interface
-- Tests for the ranking function
 - Docker setup for one-command start
 
 ## Author
@@ -79,3 +109,7 @@ Possible next steps:
 - Malt: <https://www.malt.fr/profile/joelbroutin>
 
 Open to freelance missions: get in touch through any of the links above.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
