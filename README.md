@@ -6,7 +6,7 @@ Save articles, notes and snippets, tag them by category, and find them again wit
 
 🇫🇷 [Version française](README.fr.md)
 
-![DevShelf screenshot](docs/screenshot.png)
+![DevShelf screenshot](screenshot.png)
 
 > The interface and the sample data are in French. The code, the API and this documentation are in English.
 
