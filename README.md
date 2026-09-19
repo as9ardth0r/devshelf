@@ -107,6 +107,9 @@ Possible next steps:
 - Portfolio: <https://as9ardth0r.github.io/portfolio>
 - LinkedIn: <https://www.linkedin.com/in/joel-broutin-177856437/>
 - Malt: <https://www.malt.fr/profile/joelbroutin>
+- Codeur: <https://www.codeur.com/users/761142>
+- Upwork: <https://www.upwork.com/freelancers/~010c844bd15ef2af23>
+- Fiverr: <https://fr.fiverr.com/broutinjoel>
 
 Open to freelance missions: get in touch through any of the links above.
 
