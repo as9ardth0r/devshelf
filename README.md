@@ -1,68 +1,81 @@
-<div align="center">
+# DevShelf
 
-<!-- Replace with a real banner if you have one, otherwise remove this line -->
-<!-- <img src="YOUR_BANNER_URL" width="100%" /> -->
+**A technical resource library with a Python API and search ranking computed in Rust.**
 
-# Hey 👋, I'm Joël
+Save articles, notes and snippets, tag them by category, and find them again with a relevance-ranked search.
 
-**Product Builder & Full-Stack / Systems Developer**
+![DevShelf screenshot](docs/screenshot.png)
 
-From UI/UX mockups down to low-level code, I help bring your projects to life end to end.
+<!-- TODO: replace with a full-page capture (3-4 resources visible) or a short GIF: add a resource, then search and watch the ranking change. -->
 
-🇫🇷 [Version française](README.fr.md) | 🇬🇧 English (this page)
+> The interface and the sample data are in French. The code, the API and this documentation are in English.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)](YOUR_LINKEDIN_URL)
-[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=flat&logo=vercel&logoColor=white)](YOUR_PORTFOLIO_URL)
-[![Malt](https://img.shields.io/badge/Malt-FC5757?style=flat&logo=malt&logoColor=white)](YOUR_MALT_URL)
-[![Email](https://img.shields.io/badge/Email-D14836?style=flat&logo=gmail&logoColor=white)](mailto:as9ardth0r@gmail.com)
+## What it does
 
-</div>
+- **Add resources** with a title, a category and a body of text
+- **Search with relevance ranking**, computed in a Rust module rather than in Python
+- **Automatic metadata**: word count, estimated reading time and keyword tags
+- **Live API status** shown in the UI
 
----
+## Why it is built this way
 
-## 🛠️ Technical skills
+This project is a small but complete stack, chosen to show how the pieces fit together rather than to be large:
 
-**Backend & Systems**
-![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat&logo=fastapi&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=flat&logo=django&logoColor=white)
-![Rust](https://img.shields.io/badge/Rust-000000?style=flat&logo=rust&logoColor=white)
+| Layer | Role |
+| --- | --- |
+| React frontend | Add and browse resources, search box, API status badge |
+| Python API | HTTP endpoints, validation, persistence |
+| Rust module | Search ranking (the performance-sensitive part) |
+| Database | Stores resources |
 
-**Frontend & Web**
-![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat&logo=tailwindcss&logoColor=white)
+<!-- TODO: name the exact tools (web framework, ORM, database, Python<->Rust bridge). Example: "FastAPI + SQLModel, PyO3 built with maturin, SQLite". Only write what is really in the repo. -->
 
-**Design & UI/UX**
-![Figma](https://img.shields.io/badge/Figma-F24E1E?style=flat&logo=figma&logoColor=white)
+```mermaid
+flowchart LR
+    UI[React frontend] -->|HTTP| API[Python API]
+    API --> DB[(Database)]
+    API -->|ranking call| RUST[Rust ranking module]
+```
 
----
+## Getting started
 
-## 🚀 Projects
+<!-- TODO: replace with the real commands, and test them from a clean clone. -->
 
-### [DevShelf](https://github.com/as9ardth0r/devshelf)
-A minimalist dashboard for developers and creatives, combining a FastAPI backend, a high-performance Rust core, and a clean web interface.
+```bash
+# 1. Clone
+git clone https://github.com/as9ardth0r/devshelf.git
+cd devshelf
 
-<!-- Add a screenshot if possible:
-![DevShelf preview](IMAGE_URL)
--->
+# 2. Backend (Python + Rust module)
+# TODO: install dependencies, build the Rust module, start the API
 
-<!-- Add a second project if you have one, even a small one — two projects beat one "in progress" -->
-### [Second project name](PROJECT_URL)
-Short one-line description.
+# 3. Frontend
+# TODO: install dependencies, start the dev server
+```
 
----
+Then open the frontend in your browser. The badge at the top should read **API : en ligne**.
 
-## 📫 Get in touch
+## Sample data
 
-- **Email:** [as9ardth0r@gmail.com](mailto:as9ardth0r@gmail.com)
-- **LinkedIn:** https://www.linkedin.com/in/joel-broutin-177856437/
-- **Portfolio:** https://as9ardth0r.github.io/portfolio/
-- **Availability:** state here if you're available now, full-time/part-time, remote, etc. — this is often the first thing freelance clients look for
+A small set of example resources is provided in [`seed_resources.json`](seed_resources.json) so the app looks alive on first launch.
 
-<div align="center">
+## Project status
 
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=as9ardth0r&show_icons=true&theme=default)
+MVP: the core loop (add, store, search, rank) works end to end.
 
-</div>
+Possible next steps:
+
+- Better keyword extraction (stop words, minimum length, French and English)
+- Language switch for the interface
+- Tests for the ranking function
+- Docker setup for one-command start
+
+## Author
+
+**Joel Broutin**: freelance developer.
+
+- Portfolio: <https://as9ardth0r.github.io/portfolio>
+- LinkedIn: <https://www.linkedin.com/in/joel-broutin-177856437/>
+- Malt: <https://www.malt.fr/profile/joelbroutin>
+
+Open to freelance missions: get in touch through any of the links above.
