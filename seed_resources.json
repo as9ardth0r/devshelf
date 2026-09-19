@@ -1,0 +1,22 @@
+[
+  {
+    "titre": "Introduction à Rust pour Python devs",
+    "categorie": "Programmation",
+    "contenu": "Rust est un langage système qui allie performance et sécurité mémoire sans garbage collector. Pour un développeur Python, intégrer Rust permet d'accélérer les traitements intensifs tout en gardant une API haut niveau confortable. Cet article couvre les bases de PyO3 et maturin pour créer des extensions natives performantes."
+  },
+  {
+    "titre": "Architecture FastAPI en production",
+    "categorie": "Backend",
+    "contenu": "FastAPI combine typage Python moderne et performance async pour construire des API robustes. On couvre ici la structuration des modèles avec SQLModel, la gestion des dépendances, la validation des entrées et les bonnes pratiques de déploiement pour garder une base de code lisible à mesure que le projet grandit."
+  },
+  {
+    "titre": "Concevoir une interface React accessible",
+    "categorie": "Frontend",
+    "contenu": "Une interface accessible commence par du HTML sémantique, des libellés explicites et une navigation au clavier cohérente. Cet article présente les réflexes essentiels avec React : gestion du focus, contrastes de couleurs, attributs ARIA utiles et tests simples pour vérifier le résultat."
+  },
+  {
+    "titre": "Comprendre la recherche plein texte",
+    "categorie": "Algorithmique",
+    "contenu": "Classer des résultats de recherche demande de mesurer la pertinence d'un document par rapport à une requête. On explique le principe des index inversés, la fréquence des termes et la pondération TF-IDF, puis pourquoi ce calcul gagne à être écrit dans un langage compilé."
+  }
+]
